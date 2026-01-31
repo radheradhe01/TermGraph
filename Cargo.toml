@@ -1,0 +1,39 @@
+[package]
+name = "graphterm"
+version = "0.1.0"
+edition = "2021"
+description = "Terminal-native graphical file manager with mouse-first GUI"
+authors = ["Bhavesh Varma"]
+license = "MIT"
+repository = "https://github.com/bhaveshvarma/graphterm"
+keywords = ["terminal", "file-manager", "tui", "graphics", "kitty"]
+categories = ["command-line-utilities", "filesystem"]
+
+[dependencies]
+# TUI Framework
+ratatui = "0.28"
+crossterm = { version = "0.28", features = ["event-stream"] }
+
+# Async Runtime
+tokio = { version = "1", features = ["full"] }
+
+# Image Processing
+image = "0.25"
+base64 = "0.22"
+
+# Serialization & Config
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+
+# Filesystem
+dirs = "5"
+walkdir = "2"
+
+# Error Handling
+anyhow = "1"
+thiserror = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
